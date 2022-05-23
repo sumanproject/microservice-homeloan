@@ -32,8 +32,7 @@ public class UserService {
         User user = userRepository.findByUserId(userId);
 
         Payment payment =
-                restTemplate.getForObject("http://localhost:8080/payments/" + user.getPaymentId()
-                        ,Payment.class);
+                restTemplate.getForObject("http://localhost:8090/payments/" + user.getPaymentId(),Payment.class);
 
         vo.setUser(user);
         vo.setPayment(payment);
@@ -43,15 +42,19 @@ public class UserService {
     public ResponseTemplateVO getUserWithDepartment(Long userId) {
         log.info("Inside getUserWithDepartment of UserService");
         ResponseTemplateVO vo = new ResponseTemplateVO();
-        User user = userRepository.findByUserId(userId);
+        User user = userRepository.findById(userId).get();
 
         Department department =
-                restTemplate.getForObject("http://localhost:8082/departments/" + user.getDepartmentId()
+                restTemplate.getForObject("http://localhost:9001/departments/" + user.getDepartmentId()
                         ,Department.class);
 
         vo.setUser(user);
         vo.setDepartment(department);
 
         return  vo;
+    }
+
+    public User getUserById(Long userId) {
+        return userRepository.findById(userId).get();
     }
 }
