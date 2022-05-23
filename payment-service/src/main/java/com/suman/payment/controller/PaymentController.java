@@ -6,25 +6,27 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/payments")
-@Slf4j
+
 public class PaymentController {
     @Autowired
     PaymentService paymentService;
 
-    @PostMapping("/")
-    public Payment savePayment(@RequestBody Payment payment){
-        log.info("Inside savePayment method of PaymentController ");
-        return paymentService.savePayment(payment);
+    @PostMapping("/addPayment")
+    public Payment addPayment(@RequestBody Payment payment){
+        return paymentService.addPayment(payment);
     }
-    @GetMapping("/{id}")
-    public Payment findPaymentById(@PathVariable("id") Long paymentId){
-        log.info("Inside findPaymentById method of PaymentController");
-        return paymentService.findPaymentById(paymentId);
+
+    @GetMapping("/payments")
+    public List<Payment> getAllPayments(){
+        return paymentService.getAllPayments();
+    }
+    @GetMapping("/payment/{id}")
+    public Payment getPaymentById(@PathVariable("id") Long id){
+
+        return paymentService.getPaymentById(id);
     }
 }
-
-
-
-

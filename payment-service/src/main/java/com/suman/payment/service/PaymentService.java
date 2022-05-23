@@ -6,24 +6,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-@Slf4j
-public class PaymentService {
-    @Autowired
-    PaymentRepository paymentRepository;
+import java.util.List;
 
-    public Payment savePayment(Payment payment) {
-        log.info("Inside savePayment of PaymentService");
-        return paymentRepository.save(payment);
-    }
 
-    public Payment findPaymentById(Long paymentId) {
-        log.info("Inside findPaymentById  of PaymentService");
-        return paymentRepository.findPaymentById(paymentId);
+public interface PaymentService  {
+
+    public Payment addPayment(Payment payment);
+
+    public Payment getPaymentById(Long id);
+
+    List<Payment> getAllPayments();
 
     }
 
-}
 
 
 

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 
-@Data
+ @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Payment {
