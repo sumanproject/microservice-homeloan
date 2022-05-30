@@ -1,18 +1,13 @@
-package com.suman.payment;
-
+package com.suman.security;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-
 @SpringBootApplication
-//@EnableDiscoveryClient
-public class PaymentServiceApplication  {
+public class SpringSecurityAuthServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PaymentServiceApplication.class, args);
+		SpringApplication.run(SpringSecurityAuthServerApplication.class, args);
 	}
-
 
 }
